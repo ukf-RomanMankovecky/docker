@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-deployment
+  namespace: newspace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: skuska
+  template:
+    metadata:
+      labels:
+        app: skuska
+    spec:
+      volumes:
+        - name: apache-config-volume
+          configMap:
+            name: apache-config
+      containers:
+        - name: skuska
+          image: studentroman/skuska
+          ports:
+            - containerPort: 80

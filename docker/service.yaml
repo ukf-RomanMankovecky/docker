@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: php-service
+  namespace: newspace
+spec:
+  type: NodePort
+  clusterIP: 10.102.254.56
+  selector:
+    app: skuska
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30005
